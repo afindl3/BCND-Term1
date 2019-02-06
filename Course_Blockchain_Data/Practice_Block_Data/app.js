@@ -12,7 +12,23 @@ const be = require('blockexplorer');
  */
 function getBlock(index) {
   	//add your code here
-  	
+  	be.blockIndex(index).then(blockHash => {
+      console.log(blockHash);
+      console.log(JSON.parse(blockHash));
+      
+      let hashAux = JSON.parse(blockHash).blockHash;
+      console.log(hashAux + '\n');
+      
+      be.block(hashAux).then(blockInfo => {
+        console.log(blockInfo + '\n');
+      }).catch(err => {
+        console.log('CAUGHT ERR 2')
+        throw err
+      })
+    }).catch(err => {
+      console.log('CAUGHT ERR 1')
+      throw err
+    })
 }
 
 /**
@@ -22,8 +38,9 @@ function getBlock(index) {
 
 (function theLoop (i) {
 	setTimeout(function () {
+        console.log('CALLING GET BLOCK');
         getBlock(i);
         i++;
 		if (i < 3) theLoop(i);
-	}, 3000);
+	}, 5000);
   })(0);

@@ -8,6 +8,7 @@
  */
 
 // Write your code here
+var SHA256 = require('crypto-js/sha256');
 
 /**
  * Variables: Do not change variable values to be able to answer the quiz
@@ -27,7 +28,10 @@ const dataObject = {
  */
 
 function generateHash(obj) {
-	// Write your code here
+  // Write your code here
+  obj = SHA256(JSON.stringify(obj));
+  console.log(obj);
+  return obj
 }
 
 console.log(`SHA256 Hash: ${generateHash(data1)}`);
