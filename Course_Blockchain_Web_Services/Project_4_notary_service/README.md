@@ -1,4 +1,4 @@
-# Project #3. Blockchain Web Services
+# Project #4. Blockchain Notary Service
 
 ## Setup project for Review.
 
